@@ -66,6 +66,9 @@ class AlienInvasion:
     def _check_play_button(self, mouse_pos):
         """Запускает новую игру при нажатии кнопки Play."""
         if self.play_button.rect.collidepoint(mouse_pos):
+            # Сброс игровых настроек.
+            self.settings.initialize_dynamic_settings()
+
             self.stats.game_active = True
 
             # Сброс игровой статистики.
@@ -135,6 +138,7 @@ class AlienInvasion:
             # Уничтожение существующих снарядов и создание нового флота.
             self.bullets.empty()
             self._create_fleet()
+            self.settings.increase_speed()
 
     def _create_alien(self, alien_number, row_number):
         """Создание пришельца и размещение его в ряду."""
@@ -248,3 +252,5 @@ if __name__ == '__main__':
 
 # 12.6- 13.4 - 14.2
 # Достижение нижнего края экрана 290
+
+# Рекорды
